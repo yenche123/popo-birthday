@@ -36,6 +36,11 @@ export interface ChoiceItem {
   score: number   // 1~10
 }
 
+export interface Param_AddVote {
+  userName: string
+  choices: ChoiceItem[]
+}
+
 
 /*********  requests  ***********/
 export interface LiuRqOpt {

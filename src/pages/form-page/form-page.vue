@@ -2,7 +2,7 @@
 import ChoiceWidget from "./choice-widget/choice-widget.vue";
 import { useFormPage } from "./tools/useFormPage";
 
-const { fpData } = useFormPage()
+const { fpData, onTapSubmit } = useFormPage()
 
 </script>
 <template>
@@ -25,7 +25,7 @@ const { fpData } = useFormPage()
       </div>
 
       <div class="fp-btn-box">
-        <button class="fp-btn">提交</button>
+        <button class="fp-btn" @click.stop="onTapSubmit">提交</button>
       </div>
 
     </div>
