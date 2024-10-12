@@ -8,14 +8,16 @@ export function useLandingPage() {
   const rr = useRouteAndRouter()
 
   const onTapBtn = async () => {
+    let name = liuApi.getStorageSync<string>("name") ?? ""
     const res = await cui.showTextEditor({ 
       title: "你的名字？",
       placeholder: "请输入你的名字",
+      value: name,
     })
     if(!res.confirm) return
-    const name = res.value
-    const hasVal = valTool.isStringWithVal(name)
+    const hasVal = valTool.isStringWithVal(res.value)
     if(!hasVal) return
+    name = res.value
 
     liuApi.setStorageSync("name", name)
     rr.router.push({ name: "form" })

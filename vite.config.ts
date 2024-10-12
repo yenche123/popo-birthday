@@ -2,7 +2,9 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 
+const { version } = require("./package.json")
 const projectRoot = process.cwd()
+
 
 export default defineConfig({
   resolve: {
@@ -34,6 +36,13 @@ export default defineConfig({
       sass: {
         api: "modern-compiler"
       }
+    }
+  },
+  
+  define: {
+    "LIU_ENV": {
+      version,
+      "client": "web",
     }
   }
 })
