@@ -128,7 +128,10 @@ const onTapSponsor = () => {
       </div>
       <button class="liu-btn rpw-refresh-btn" @click.stop="onTapRefresh">
         <div class="rpw-refresh">
-          <img src="../../assets/refresh.svg" alt="刷新" class="rpw-refresh-icon">
+          <img src="../../assets/refresh.svg" alt="刷新" 
+            class="rpw-refresh-icon"
+            draggable="false"
+          >
         </div>
         <span>刷新</span>
       </button>
@@ -215,7 +218,7 @@ const onTapSponsor = () => {
 .rpbi-title {
   font-weight: 700;
   color: var(--main-text);
-  font-size: var(--btn-font);
+  font-size: var(--btn-font-2);
   margin-block-end: 6px;
   text-wrap: pretty;
 }

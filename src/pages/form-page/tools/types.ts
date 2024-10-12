@@ -8,4 +8,5 @@ export interface MyChoiceItem {
 
 export interface FpData {
   myChoices: MyChoiceItem[]
+  loading: boolean
 }

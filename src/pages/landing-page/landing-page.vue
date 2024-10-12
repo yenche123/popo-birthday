@@ -1,20 +1,33 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { useLandingPage } from './tools/useLandingPage';
+import LoadingPopup from "~/components/loading-popup/loading-popup.vue";
 
 const {
   onTapBtn,
 } = useLandingPage()
 
+const loading = ref(true)
+
+let loadTimeout = setTimeout(() => {
+  if(loading.value) loading.value = false
+}, 6000)
+
+const onBgLoaded = () => {
+  clearTimeout(loadTimeout)
+  loading.value = false
+}
+
 </script>
 <template>
 
   <div class="liu-mc-container">
-    <div class="liu-mc-box">
+    <div class="liu-no-user-select liu-mc-box">
 
       <!-- content box -->
       <div class="lp-box">
         <div class="lp-bg"></div>
-        <div class="lp-poster1" />
+        <img class="lp-poster1" src="/poster1.jpg" @load="onBgLoaded" draggable="false" />
 
         <!-- button -->
         <div class="lp-btn" @click.stop="onTapBtn">
@@ -25,6 +38,8 @@ const {
 
     </div>
   </div>
+
+  <LoadingPopup :enable="loading"></LoadingPopup>
 
 </template>
 <style scoped lang="scss">
@@ -54,10 +69,7 @@ const {
   position: absolute;
   top: 0;
   left: 0;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url("/poster1.jpg");
+  pointer-events: none;
 }
 
 .lp-btn {

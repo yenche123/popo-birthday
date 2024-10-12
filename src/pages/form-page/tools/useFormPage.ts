@@ -13,6 +13,7 @@ export function useFormPage() {
   const rr = useRouteAndRouter()
   const fpData = reactive<FpData>({
     myChoices: [],
+    loading: true,
   })
 
   getCourses(fpData)
@@ -123,6 +124,7 @@ async function getCourses(
   const courses = res.data?.courses ?? []
   const list = turnCourseItemsIntoMyChoices(courses)
   fpData.myChoices = list
+  fpData.loading = false
 }
 
 function turnCourseItemsIntoMyChoices(

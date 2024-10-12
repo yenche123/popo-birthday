@@ -26,10 +26,11 @@
 
   /** 常用按钮尺寸 */
   --btn-max: 250px;
-  --btn-font: 20px;
+  --btn-font: 18px;
   --title-font: 22px;
   --desc-font: 18px;
   --mini-font: 16px;
+  --btn-font-2: 20px;
 
   /** main colors */
   --theme-one: #F1883F;
@@ -248,7 +249,7 @@ input {
   border-radius: 8px;
   background-color: var(--primary-color);
   color: var(--on-primary);
-  font-size: var(--btn-font);
+  font-size: var(--btn-font-2);
   font-weight: 700;
   cursor: pointer;
   transition: .1s;

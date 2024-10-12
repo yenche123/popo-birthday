@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import LoadingPopup from "~/components/loading-popup/loading-popup.vue";
 import ChoiceWidget from "./choice-widget/choice-widget.vue";
 import { useFormPage } from "./tools/useFormPage";
 
@@ -30,6 +31,8 @@ const { fpData, onTapSubmit } = useFormPage()
 
     </div>
   </div>
+
+  <LoadingPopup :enable="fpData.loading"></LoadingPopup>
 
 </template>
 <style scoped lang="scss">
