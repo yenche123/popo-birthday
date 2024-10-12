@@ -42,19 +42,20 @@ const innerList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 .cw-item {
   width: 9%;
   position: relative;
+  cursor: pointer;
 }
 
 .cw-bg {
   width: 100%;
   padding-bottom: 100%;
-  background-color: #f1f1f1;
-  border-radius: 10px;
+  background-color: #f3f3f3;
+  border-radius: 4px;
   transition: .15s;
 }
 
 .cw-active .cw-bg {
   background-color: var(--primary-color);
-  opacity: .3;
+  opacity: .2;
 }
 
 .cw-score {

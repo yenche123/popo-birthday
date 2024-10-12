@@ -45,6 +45,7 @@
   --popup-bg: rgba(0, 0, 0, .8);
   --main-text: #1f2429;
   --main-normal: #3f4549;
+  --main-note: #ababab;
 
   /** custom ui: modal */
   --cui-modal: rgba(250, 250, 250, .82);
@@ -216,4 +217,10 @@ input {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.liu-no-user-select {
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: default;
 }
