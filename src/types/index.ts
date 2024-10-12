@@ -12,15 +12,23 @@ export interface Res_GetCourses {
 }
 
 export interface CourseScoreItem {
-  name: string
+  courseId: string
+  courseName: string
   totalScore: string
   avgScore: string      // 平均得分
 }
 
+export interface ChoiceScoreItem {
+  courseId: string
+  courseName: string
+  score: number
+  diffScore: string    // fixed to 2 decimal places
+}
+
 export interface EaterData {
   name: string
-  diffScore: string    // fixed to 2 decimal places
-  courseScores: string[]
+  totalDiffScore: string        // fixed to 2 decimal places
+  choiceScores: ChoiceScoreItem[]
 }
 
 export interface Res_GetResult {
