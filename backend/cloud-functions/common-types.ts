@@ -9,6 +9,12 @@ export async function main(ctx: FunctionContext) {
   return true
 }
 
+/*********************** 一些工具类型 **********************/
+
+export type PartialSth<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
+export type RequireSth<T, K extends keyof T> = Omit<T, K> & Required<Pick<T, K>>
+export type Partial_Id<T extends BaseTable> = PartialSth<T, "_id">
+
 /***************** 基础 Schema 用于 valibot *************/
 // validate id's min length
 export const Sch_Id = vbot.string([vbot.minLength(8)])
@@ -110,22 +116,41 @@ export interface ChoiceItem {
   score: number   // 1~10
 }
 
+export const Sch_ChoiceItem = vbot.object({
+  courseId: Sch_Id,
+  courseName: Sch_String_WithLength,
+  score: vbot.number([vbot.minValue(1), vbot.maxValue(10)]),
+}, vbot.never())
+
+export interface Param_AddVote {
+  userName: string
+  choices: ChoiceItem[]
+}
+
+export const Sch_Param_AddVote = vbot.object({
+  userName: Sch_String_WithLength,
+  choices: vbot.array(Sch_ChoiceItem),
+})
+
 
 /***************************** Tables *****************************/
-export interface Table_Activity {
+
+export interface BaseTable {
   _id: string
+}
+
+export interface Table_Activity extends BaseTable {
   name: string
   courses?: CourseScoreItem[]
 }
 
-export interface Table_Course {
-  _id: string
+export interface Table_Course extends BaseTable {
   name: string
   no: number       // 排序
   author?: string
 }
 
-export interface Table_Vote {
+export interface Table_Vote extends BaseTable {
   userName: string
   userId: string
   choices: ChoiceItem[]
