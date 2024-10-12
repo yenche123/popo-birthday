@@ -62,7 +62,7 @@ const innerList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f3f3f3;
+  background-color: var(--card-bg);
   transition: .15s;
 }
 
