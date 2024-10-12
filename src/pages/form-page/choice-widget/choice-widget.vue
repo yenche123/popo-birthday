@@ -21,7 +21,9 @@ const innerList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       <div class="cw-item" @click.stop="$emit('tapscore', item)"
         :class="{ 'cw-active': score && score >= item }"
       >
-        <div class="cw-bg"></div>
+        <div class="cw-bg">
+          <div class="cw-bg2"></div>
+        </div>
         <div class="cw-score">
           <span>{{ item }}</span>
         </div>
@@ -48,13 +50,38 @@ const innerList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 .cw-bg {
   width: 100%;
   padding-bottom: 100%;
-  background-color: #f3f3f3;
   border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cw-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f3f3f3;
   transition: .15s;
 }
 
-.cw-active .cw-bg {
+.cw-bg2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: var(--primary-color);
+  opacity: 0;
+  transition: .15s;
+}
+
+.cw-active .cw-bg::before {
+  opacity: 0;
+}
+
+.cw-active .cw-bg2 {
   opacity: .2;
 }
 
