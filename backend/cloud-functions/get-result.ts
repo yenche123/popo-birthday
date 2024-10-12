@@ -4,6 +4,7 @@ import cloud from "@lafjs/cloud"
 import type { 
   ChoiceScoreItem, 
   CourseScoreItem, 
+  EaterData, 
   Res_GetResult, 
   Table_Activity, 
   Table_Vote,
@@ -59,10 +60,10 @@ async function toGetResult(ctx: FunctionContext) {
   return { code: "0000", data: result }
 }
 
-function calculateEaterData(
+export function calculateEaterData(
   myVote: Table_Vote,
   courses: CourseScoreItem[],
-) {
+): EaterData {
   const choices = myVote.choices
   const choiceScores: ChoiceScoreItem[] = []
 
