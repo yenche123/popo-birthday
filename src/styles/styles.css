@@ -48,6 +48,11 @@
   --main-text: #1f2429;
   --main-normal: #3f4549;
   --main-note: #868686;
+  --select-bg: #c0abfe;
+  --other-btn-bg: #f3f3f3;
+  --other-btn-text: #565656;
+  --other-btn-hover: #e9e9e9;
+  --main-code: #686868;
 
   /** custom ui: modal */
   --cui-modal: rgba(250, 250, 250, .82);
@@ -247,6 +252,10 @@ input {
   font-weight: 700;
   cursor: pointer;
   transition: .1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
 }
 
 @media(hover: hover) {

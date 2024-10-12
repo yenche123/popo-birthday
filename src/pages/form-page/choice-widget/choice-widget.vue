@@ -82,7 +82,7 @@ const innerList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
 .cw-active .cw-bg2 {
-  opacity: .2;
+  opacity: .25;
 }
 
 .cw-score {

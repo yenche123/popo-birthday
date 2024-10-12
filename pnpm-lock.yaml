@@ -42,6 +42,9 @@ importers:
       vite-plugin-compression2:
         specifier: ^1.3.0
         version: 1.3.0(rollup@4.24.0)
+      vite-plugin-qrcode:
+        specifier: ^0.2.3
+        version: 0.2.3(vite@5.4.8(@types/node@20.16.11)(sass@1.79.5))
       vue-tsc:
         specifier: ^2.1.6
         version: 2.1.6(typescript@5.6.3)
@@ -557,6 +560,10 @@ packages:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
     engines: {node: ^10 || ^12 || >=14}
 
+  qrcode-terminal@0.12.0:
+    resolution: {integrity: sha512-EXtzRZmC+YGmGlDFbXKxQiMZNwCLEO6BANKXG4iCtSIM0yqc/pappSx3RIKr4r0uh5JsBckOXeKrB3Iz7mdQpQ==}
+    hasBin: true
+
   readdirp@4.0.2:
     resolution: {integrity: sha512-yDMz9g+VaZkqBYS/ozoBJwaBhTbZo3UNYQHNRw1D3UFQB8oHB4uS/tAODO+ZLjGWmUbKnIlOWO+aaIiAxrUWHA==}
     engines: {node: '>= 14.16.0'}
@@ -604,6 +611,12 @@ packages:
 
   vite-plugin-compression2@1.3.0:
     resolution: {integrity: sha512-/cYzISoYOo/SwPUBReS1E02a8eNTpQm8+lQUBj5NNGxuq4iZ3JOfWExUlobhVhPMJuejD7dipT+cMLbaWsMbdw==}
+
+  vite-plugin-qrcode@0.2.3:
+    resolution: {integrity: sha512-TFzhf20v29hnh2XEoZ2kxg8Ff/ui36pR7PGDaHaKEmsQaRagv31XacHxbw5O07HcC1Mkr4tKcYb+PFASSceHmw==}
+    engines: {node: ^14.13.1 || ^16.0.0 || >=18}
+    peerDependencies:
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
 
   vite@5.4.8:
     resolution: {integrity: sha512-FqrItQ4DT1NC4zCUqMB4c4AZORMKIa0m8/URVCZ77OZ/QSNeJ54bU1vrFADbDsuwfIPcgknRkmqakQcgnL4GiQ==}
@@ -1090,6 +1103,8 @@ snapshots:
       picocolors: 1.1.0
       source-map-js: 1.2.1
 
+  qrcode-terminal@0.12.0: {}
+
   readdirp@4.0.2: {}
 
   rollup@4.24.0:
@@ -1145,6 +1160,11 @@ snapshots:
       tar-mini: 0.2.0
     transitivePeerDependencies:
       - rollup
+
+  vite-plugin-qrcode@0.2.3(vite@5.4.8(@types/node@20.16.11)(sass@1.79.5)):
+    dependencies:
+      qrcode-terminal: 0.12.0
+      vite: 5.4.8(@types/node@20.16.11)(sass@1.79.5)
 
   vite@5.4.8(@types/node@20.16.11)(sass@1.79.5):
     dependencies:

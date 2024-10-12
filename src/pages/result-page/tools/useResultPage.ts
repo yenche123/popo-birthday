@@ -2,16 +2,26 @@ import { onActivated, reactive } from "vue";
 import type { RpData } from "./types";
 import { fetchResult } from "~/pages/utils/requests";
 import { Res_GetResult } from "~/types";
+import { useThrottleFn } from "@vueuse/core";
 
 export function useResultPage() {
-  const rpData = reactive<RpData>({})
+  const rpData = reactive<RpData>({
+    loading: true,
+    refreshRotateDeg: 0,
+  })
 
   onActivated(() => {
     getResult(rpData)
   })
 
+  const onTapRefresh = useThrottleFn(() => {
+    rpData.refreshRotateDeg += 360
+    getResult(rpData)
+  }, 1500)
+
   return {
     rpData,
+    onTapRefresh,
   }
 }
 
@@ -23,6 +33,7 @@ async function getResult(
     rpData.rs = res.data
     calculateBestCourse(rpData, res.data)
   }
+  rpData.loading = false
 }
 
 function calculateBestCourse(

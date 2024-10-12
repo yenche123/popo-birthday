@@ -1,6 +1,8 @@
 <script lang="ts" setup>
+import LoadingPopup from "~/components/loading-popup/loading-popup.vue"
 import { useResultPage } from "./tools/useResultPage";
-const { rpData } = useResultPage()
+
+const { rpData, onTapRefresh } = useResultPage()
 
 const onTapSponsor = () => {
   window.open("https://mp.weixin.qq.com/s/WltAf-EGK5CHY6CTi3p24Q", "_blank")
@@ -118,10 +120,69 @@ const onTapSponsor = () => {
       <div class="rp-virtual"></div>
 
     </div>
+
+    <div class="liu-no-user-select liu-mc-box rp-waiting-result" v-else>
+      <div class="rpw-title">已提交</div>
+      <div class="rpw-desc">
+        <span>等待金婆婆公布结果</span>
+      </div>
+      <button class="liu-btn rpw-refresh-btn" @click.stop="onTapRefresh">
+        <div class="rpw-refresh">
+          <img src="../../assets/refresh.svg" alt="刷新" class="rpw-refresh-icon">
+        </div>
+        <span>刷新</span>
+      </button>
+    </div>
+
   </div>
+
+  <LoadingPopup :enable="rpData.loading"></LoadingPopup>
 
 </template>
 <style scoped lang="scss">
+
+.rp-waiting-result {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rpw-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--main-text);
+  margin-block-end: 12px;
+  text-align: center;
+}
+
+.rpw-desc {
+  font-size: var(--desc-font);
+  color: var(--main-note);
+  margin-block-end: 48px;
+  text-align: center;
+}
+
+.rpw-refresh-btn {
+  max-width: 200px;
+}
+
+.rpw-refresh {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  margin-inline-end: 10px;
+}
+
+.rpw-refresh-icon {
+  width: 100%;
+  height: 100%;
+  transition: .85s;
+  transform: v-bind("'rotate(' + rpData.refreshRotateDeg + 'deg)'");
+}
+
 
 .rp-virtual {
   width: 100%;

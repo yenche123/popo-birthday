@@ -37,10 +37,6 @@ export async function fetchResult() {
     data2 = res.data
     stamp2 = Date.now()
   }
-
-  console.log("看一下 fetchCourses: ")
-  console.log(res)
-
+  
   return res
-
 }

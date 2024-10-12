@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
+import { qrcode } from 'vite-plugin-qrcode'
 
 const { version } = require("./package.json")
 const projectRoot = process.cwd()
@@ -13,7 +14,10 @@ export default defineConfig({
     },
   },
 
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    qrcode(),
+  ],
   
   server: {
     host: true,
