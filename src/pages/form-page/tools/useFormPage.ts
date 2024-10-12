@@ -1,6 +1,6 @@
-import { reactive } from "vue";
+import { onActivated, reactive } from "vue";
 import { MyChoiceItem, type FpData } from "./types";
-import { fetchCourses } from "~/pages/utils/requests";
+import { fetchCourses, fetchResult } from "~/pages/utils/requests";
 import type { ChoiceItem, Param_AddVote, CourseItem } from "~/types";
 import cui from "~/components/custom-ui";
 import liuApi from "~/utils/liu-api";
@@ -16,6 +16,9 @@ export function useFormPage() {
   })
 
   getCourses(fpData)
+  onActivated(() => {
+    preFetchResult(rr)
+  })
 
   const onTapSubmit = async () => {
     const emptyData = fpData.myChoices.find(item => !Boolean(item.score))
@@ -44,6 +47,25 @@ export function useFormPage() {
   }
 }
 
+
+async function preFetchResult(
+  rr: RouteAndRouter,
+) {
+  await valTool.waitMilli(2500)
+  const res = await fetchResult()
+  const { code, data } = res
+  if(code !== "0000" || !data) return
+
+  await cui.showModal({
+    title: "🥂",
+    content: "品鉴已结束",
+    isTitleEqualToEmoji: true,
+    showCancel: false,
+    confirmText: "去看结果"
+  })
+
+  rr.router.replace({ name: "result" })
+}
 
 
 async function toSubmit(
@@ -88,7 +110,7 @@ async function toSubmit(
   cui.hideLoading()
   console.log("res3: ", res3)
   if(res3.code === "0000") {
-    rr.router.push({ name: "result" })
+    rr.router.replace({ name: "result" })
   }
 }
 
