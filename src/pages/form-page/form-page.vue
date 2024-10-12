@@ -25,7 +25,7 @@ const { fpData, onTapSubmit } = useFormPage()
       </div>
 
       <div class="fp-btn-box">
-        <button class="fp-btn" @click.stop="onTapSubmit">提交</button>
+        <button class="liu-btn" @click.stop="onTapSubmit">提交</button>
       </div>
 
     </div>
@@ -69,32 +69,6 @@ const { fpData, onTapSubmit } = useFormPage()
   display: flex;
   justify-content: center;
 }
-
-.fp-btn {
-  width: 100%;
-  padding: 12px 24px;
-  box-sizing: border-box;
-  text-align: center;
-  max-width: 300px;
-  border-radius: 8px;
-  background-color: var(--primary-color);
-  color: var(--on-primary);
-  font-size: var(--btn-font);
-  font-weight: 700;
-  cursor: pointer;
-  transition: .1s;
-}
-
-@media(hover: hover) {
-  .fp-btn:hover {
-    background-color: var(--primary-hover);
-  }
-}
-
-.fp-btn:active {
-  background-color: var(--primary-active);
-}
-
 
 
 

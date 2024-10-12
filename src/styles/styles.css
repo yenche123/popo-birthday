@@ -52,6 +52,11 @@
   --cui-modal-other-btn-bg: #f5f5f5;
   --cui-modal-other-btn-hover: #e5e7ea;
 
+  /** custom ui: loading */
+  --cui-loading: rgba(46, 46, 46, .91);
+  --on-cui-loading: #eeeeee;
+  --cui-loading-shadow: 0 10px 20px 1px rgba(0,0,0,.38);
+
 }
 
 
@@ -223,4 +228,31 @@ input {
   user-select: none;
   -webkit-user-select: none;
   cursor: default;
+}
+
+/********* button ************/
+
+.liu-btn {
+  width: 100%;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  text-align: center;
+  max-width: 300px;
+  border-radius: 8px;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  font-size: var(--btn-font);
+  font-weight: 700;
+  cursor: pointer;
+  transition: .1s;
+}
+
+@media(hover: hover) {
+  .liu-btn:hover {
+    background-color: var(--primary-hover);
+  }
+}
+
+.liu-btn:active {
+  background-color: var(--primary-active);
 }
