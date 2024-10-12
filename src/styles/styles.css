@@ -29,6 +29,7 @@
   --btn-font: 20px;
   --title-font: 22px;
   --desc-font: 20px;
+  --mini-font: 16px;
 
   /** main colors */
   --theme-one: #F1883F;
@@ -43,6 +44,7 @@
   --primary-active: #dc7023;
   --popup-bg: rgba(0, 0, 0, .8);
   --main-text: #1f2429;
+  --main-normal: #3f4549;
 
   /** custom ui: modal */
   --cui-modal: rgba(250, 250, 250, .82);

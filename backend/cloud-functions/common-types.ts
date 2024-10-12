@@ -1,3 +1,5 @@
+// Function Name: common-types
+
 import * as vbot from "valibot"
 import type { BaseSchema } from "valibot"
 
@@ -57,19 +59,6 @@ export const Sch_X_Liu = vbot.object({
   x_liu_user_id: sch_string_length(16),
 })
 
-
-export interface CourseScoreItem {
-  name: string
-  totalScore: string
-  avgScore: string      // 平均得分
-}
-
-export interface VoteItem {
-  _id: string     // Table_Course._id
-  courseName: string    // 菜名
-  score: number   // 1~10
-}
-
 /*********************** 回调类型 **********************/
 export interface LiuRqReturn<T = Record<string, any>> {
   code: string
@@ -83,6 +72,44 @@ export interface LiuErrReturn {
   errMsg?: string
   showMsg?: string
 }
+
+
+/************************** Return Types **************************/
+export interface CourseItem {
+  id: string
+  name: string
+  author?: string
+}
+
+export interface Res_GetCourses {
+  courses: CourseItem[]
+}
+
+export interface CourseScoreItem {
+  name: string
+  totalScore: string
+  avgScore: string      // 平均得分
+}
+
+export interface EaterData {
+  name: string
+  diffScore: string    // fixed to 2 decimal places
+  courseScores: string[]
+}
+
+export interface Res_GetResult {
+  activityId: string
+  bestEater: EaterData     // 最佳品鉴官
+  yourData?: EaterData
+  courses: CourseScoreItem[]
+}
+
+export interface ChoiceItem {
+  courseId: string      // Table_Course._id
+  courseName: string    // 菜名
+  score: number   // 1~10
+}
+
 
 /***************************** Tables *****************************/
 export interface Table_Activity {
@@ -101,6 +128,6 @@ export interface Table_Course {
 export interface Table_Vote {
   userName: string
   userId: string
-  votes: VoteItem[]
+  choices: ChoiceItem[]
   createdStamp: number
 }

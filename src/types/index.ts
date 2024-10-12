@@ -8,7 +8,6 @@ export interface CourseItem {
 }
 
 export interface Res_GetCourses {
-  activityId: string
   courses: CourseItem[]
 }
 
@@ -29,6 +28,12 @@ export interface Res_GetResult {
   bestEater: EaterData     // 最佳品鉴官
   yourData?: EaterData
   courses: CourseScoreItem[]
+}
+
+export interface ChoiceItem {
+  courseId: string      // Table_Course._id
+  courseName: string    // 菜名
+  score: number   // 1~10
 }
 
 
