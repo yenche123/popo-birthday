@@ -1,7 +1,7 @@
 {
   "name": "popo-birthday",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Let's restart your life!",
   "type": "module",
   "scripts": {

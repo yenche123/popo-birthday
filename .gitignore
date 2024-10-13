@@ -23,5 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# files for verification
+MP_verify_*
+WW_verify_*
+
 # Tencent COSCLI
 coscli
