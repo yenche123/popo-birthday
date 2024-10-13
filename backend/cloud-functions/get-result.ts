@@ -13,7 +13,6 @@ import type {
 const db = cloud.database()
 
 export async function main(ctx: FunctionContext) {
-  console.log("let's get the result!")
   const res = await toGetResult(ctx)
   return res
 }

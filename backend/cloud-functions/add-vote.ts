@@ -37,8 +37,27 @@ async function toAddVote(ctx: FunctionContext) {
   }
   const vCol = db.collection("Vote")
   const res1 = await vCol.add(newVote)
-  return { code: "0000" }
 
+  checkRepeatedVote(userId)
+
+  return { code: "0000" }
+}
+
+async function checkRepeatedVote(
+  userId: string
+) {
+  const vCol = db.collection("Vote")
+  const res1 = await vCol.where({ userId }).orderBy("createdStamp", "asc").get()
+  const votes = res1.data ?? []
+  if(votes.length < 2) return
+
+  const firstVote = votes[0]
+  console.warn("discover repeated vote: ")
+  console.log(firstVote)
+  const res2 = await await vCol.doc(firstVote._id).remove()
+  console.log("delete result: ")
+  console.log(res2)
+  return true
 }
 
 function checkEntry(ctx: FunctionContext) {
